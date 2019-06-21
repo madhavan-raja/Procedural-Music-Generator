@@ -27,7 +27,7 @@ function setup()
 	bpm.attribute('max', '400');
 
 	musicKey = createSelect();
-	musicKey.position(145, 230);
+	musicKey.position(145, 220);
 	musicKey.option('C');
 	musicKey.option('C#');
 	musicKey.option('D');
@@ -43,13 +43,13 @@ function setup()
 
 	
 	octave = createInput('0', 'number');
-	octave.position(580, 230);
+	octave.position(545, 220);
 	octave.attribute('min', '-3');
 	octave.attribute('max', '3');
 	octave.style('width', '92px');
 
 	musicMode = createSelect();
-	musicMode.position(210, 310);
+	musicMode.position(170, 290);
 	musicMode.option('Ionian (Major)');
 	musicMode.option('Dorian');
 	musicMode.option('Phrygian');
@@ -57,31 +57,34 @@ function setup()
 	musicMode.option('Mixolydian');
 	musicMode.option('Aeolian (Minor)');
 	musicMode.option('Locrian');
-	musicMode.style('width', '600px');
+	musicMode.style('width', '470px');
+
+	vol = createSlider(1, 10, 4, 0.1);
+	vol.position(8, 428);
+	vol.style('width', '180px');
 
 	playButton = createButton('PLAY');
-	playButton.position(10, 440);
+	playButton.position(10, 455);
 	playButton.mousePressed(togglePlayback);
 
 	fill(255);
 	textFont(fontRegular);
-	textSize(62);
 }
 
 function draw()
 {
 	background(34);
-	text('PROCEDURAL MUSIC GENERATOR', 10, 70);
+	textSize(62);
+	text('Procedural Music Generator', 10, 62);
 
-	text('BPM', 145, 212);
-	text('Octave', 330, 292);
-	text('Key', 10, 292);
-	text('Mode', 10, 372);
+	textSize(50);
+	text('BPM', 145, 200);
+	text('Key', 10, 270);
+	text('Octave', 315, 270);
+	text('Mode', 10, 340);
 
 	baseFreq = baseFreqs[musicKey.value()];
 	currentIntervals = intervals[musicMode.value()];
-
-	console.log(currentIntervals);
 
 	if (musicCount % (3600 / constrain(bpm.value(), 50, 400)) == 0)
 	{
@@ -91,7 +94,8 @@ function draw()
 
 	if (isPlaying)
 	{
-		text(curFreq.toFixed(2) + 'Hz', 215, 503);
+		osc.amp(map(vol.value(), 1, 10, 0.01, 1), 0.1);
+		text(curFreq.toFixed(2) + 'Hz', 215, 498);
 		musicCount++;
 	}
 }
@@ -112,7 +116,6 @@ function togglePlayback()
 
 function startPlaying()
 {
-	osc.amp(2, 0.5);
 	isPlaying = true;
 	musicCount = 0;
 
