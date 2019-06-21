@@ -1,0 +1,29 @@
+input[type=number]
+{
+	background-color: #222222;
+	color: white;
+	font-size: 62px;
+	border-style: none;
+	width: 130px;
+	font-family: SourceCodePro-Light,tahoma,geneva,algerian;
+}
+
+select
+{
+	background-color: #222222;
+	color: white;
+	font-size: 62px;
+	border-style: none;
+	width: 100px;
+	font-family: SourceCodePro-Light,tahoma,geneva,algerian;
+}
+
+button
+{
+	background-color: #222222;
+	color: white;
+	font-size: 62px;
+	border-style: solid;
+	width: 180px;
+	font-family: SourceCodePro-Light,tahoma,geneva,algerian;
+}
