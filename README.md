@@ -1,4 +1,4 @@
-# Procedural-Music-Generator
+# Procedural Music Generator
 Plays random notes in a musical scale  
 Live Demo: https://madhavan-raja.github.io/procedural-music-generator/
 
